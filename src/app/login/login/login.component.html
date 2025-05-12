@@ -1,0 +1,21 @@
+<div>
+     <div class="container_login">
+        <i class="bi bi-person-circle icono-login"></i>
+        
+        <h2 class="titulo fuente_textos_titulos">Iniciar Sesión</h2>
+        <form class="center fuente_textos" (ngSubmit)="onlogin()">
+        <label for="username">Usuario:</label>
+        <input type="text" name="email" required [(ngModel)]="loginRequest.email"><br><br>
+          
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" required [(ngModel)]="loginRequest.password"><br><br>
+          
+        <div>
+            <div>
+                <button type="submit" class="boton_login fuente_textos">Entrar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
