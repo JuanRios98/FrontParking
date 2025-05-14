@@ -1,0 +1,71 @@
+<!-- <div *ngIf="mostrarModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
+    <h2 class="text-xl font-bold mb-4">Crear Nueva Celda</h2>
+
+    <label class="block mb-2 text-sm font-medium">Nombre</label>
+    <input
+      [(ngModel)]="nuevaCelda.nombre"
+      type="text"
+      class="w-full border rounded px-3 py-2 mb-4"
+      placeholder="Ej. Celda 01"
+    />
+
+    <label class="block mb-2 text-sm font-medium">Estado</label>
+    <select
+      [(ngModel)]="nuevaCelda.estado"
+      class="w-full border rounded px-3 py-2 mb-4"
+    >
+      <option value="disponible">Disponible</option>
+      <option value="ocupada">Ocupada</option>
+      <option value="reservada">Reservada</option>
+    </select>
+
+    <div class="flex justify-end gap-2">
+      <button (click)="mostrarModal = false" class="px-4 py-2 bg-gray-300 rounded">
+        Cancelar
+      </button>
+      <button (click)="guardarCelda()" class="px-4 py-2 bg-green-600 text-white rounded">
+        Guardar
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <!-- Contenedor del modal -->
+  <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+    <h2 class="text-xl font-bold mb-4">Crear Celda</h2>
+
+    <form (ngSubmit)="guardarCelda()" #formularioCelda="ngForm" class="space-y-4">
+      <div>
+        <label for="codigo" class="block font-medium">Código:</label>
+        <input type="text" id="codigo" [(ngModel)]="nuevaCelda.codigo" name="codigo" required
+          class="w-full border rounded-md px-3 py-2"/>
+      </div>
+
+      <div>
+        <label for="tipoCelda" class="block font-medium">Tipo de Celda:</label>
+        <select id="tipoCelda" [(ngModel)]="nuevaCelda.tipoCelda" name="tipoCelda"
+          class="w-full border rounded-md px-3 py-2">
+          <option value="Automovil">Automóvil</option>
+          <option value="Moto">Moto</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="estadoCelda" class="block font-medium">Estado:</label>
+        <select id="estadoCelda" [(ngModel)]="nuevaCelda.estadoCelda" name="estadoCelda"
+          class="w-full border rounded-md px-3 py-2">
+          <option value="Libre">Libre</option>
+          <option value="Ocupada">Ocupada</option>
+          <option value="Reservado">Reservado</option>
+        </select>
+      </div>
+
+      <div class="flex justify-end gap-4 pt-4">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Guardar</button>
+        <button type="button" (click)="cerrarModal()" class="bg-gray-300 px-4 py-2 rounded-lg">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
