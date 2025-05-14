@@ -1,6 +1,6 @@
 <div class="p-4">
   <button class="bg-blue-600 text-white px-4 py-2 rounded-lg"
-  (click)="abrirModalCrearCelda()">Crear</button>
+          (click)="abrirModalCrearCelda()">Crear</button>
 </div>
 
 <div class="p-6">
@@ -9,43 +9,47 @@
   </h2>
 
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-    <!-- Celda 1 - Disponible -->
-    <div class="rounded-lg p-6 border shadow-sm text-center bg-green-100 border-green-300">
-      <div class="mb-4">
-        <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center text-white bg-green-600">
-          ⬛
-        </div>
-      </div>
-      <p class="text-lg font-semibold">Celda A1</p>
-      <p class="mt-1 text-green-600">Disponible</p>
-    </div>
+    <!-- Iterar sobre las celdas -->
+    <div *ngFor="let celda of celdas"
+         class="rounded-lg p-6 border shadow-sm text-center"
+         [ngClass]="{
+           'bg-green-100 border-green-300': celda.estado === 'Libre',
+           'bg-red-100 border-red-300': celda.estado === 'Ocupado',
+           'bg-yellow-100 border-yellow-300': celda.estado === 'Reservado'
+         }">
 
-    <!-- Celda 2 - Ocupada -->
-    <div class="rounded-lg p-6 border shadow-sm text-center bg-red-100 border-red-300">
       <div class="mb-4">
-        <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center text-white bg-red-600">
-          🚗
+        <div [ngClass]="{
+               'bg-green-600': celda.estado === 'Libre',
+               'bg-red-600': celda.estado === 'Ocupado',
+               'bg-yellow-600': celda.estado === 'Reservado'
+             }"
+             class="w-8 h-8 mx-auto rounded-full flex items-center justify-center text-white">
+          <ng-container [ngSwitch]="celda.estado">
+            <div *ngSwitchCase="'Libre'">⬛</div>
+            <div *ngSwitchCase="'Ocupado'">🚗</div>
+            <div *ngSwitchCase="'Reservado'">🕒</div>
+          </ng-container>
         </div>
       </div>
-      <p class="text-lg font-semibold">Celda B2</p>
-      <p class="mt-1 text-red-600">Ocupada</p>
-    </div>
 
-    <!-- Celda 3 - Reservada -->
-    <div class="rounded-lg p-6 border shadow-sm text-center bg-yellow-100 border-yellow-300">
-      <div class="mb-4">
-        <div class="w-8 h-8 mx-auto rounded-full flex items-center justify-center text-white bg-yellow-600">
-          🕒
-        </div>
-      </div>
-      <p class="text-lg font-semibold">Celda C3</p>
-      <p class="mt-1 text-yellow-600">Reservada</p>
+      <p class="text-lg font-semibold">{{ celda.codigo }}</p>
+      <p class="mt-1"
+         [ngClass]="{
+           'text-green-600': celda.estado === 'Libre',
+           'text-red-600': celda.estado === 'Ocupado',
+           'text-yellow-600': celda.estado === 'Reservado'
+         }">
+        <!-- Capitalizar la primera letra del estado -->
+        {{ celda.estado.charAt(0).toUpperCase() + celda.estado.slice(1) }}
+      </p>
     </div>
   </div>
 </div>
 
+<!-- Modal para crear celda -->
 <app-crear-celda 
   *ngIf="mostrarModal"
-  (cerrar)="cerrarModalCrearCelda()" 
+  (cerrar)="cerrarModal()" 
   (guardar)="guardarNuevaCelda($event)">
 </app-crear-celda>

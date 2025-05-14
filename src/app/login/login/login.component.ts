@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -25,8 +25,14 @@ export class LoginComponent {
         console.log('Inicio correctamente',rs);
         // this.Router.navigate(['']);
       },error: (e) =>{
-        console.log('Error al iniciar sesion', e);
-        alert('Error al iniciar sesion');
+        console.log('Error al iniciar sesion',e);
+        Swal.fire({
+          title: ('Credenciales invalidadas'),
+          icon: 'error',
+          denyButtonText: 'aceptar',
+          
+        })
+        
       }
     })
   }

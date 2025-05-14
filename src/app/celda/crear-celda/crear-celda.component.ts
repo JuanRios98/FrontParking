@@ -13,12 +13,11 @@ export class CrearCeldaComponent {
   @Output() cerrar = new EventEmitter<void>();
   @Output() guardar = new EventEmitter<Celda>();
   
-
   nuevaCelda: Celda = {
     id: 0,
     codigo: '',
-    tipoCelda: 'Automovil',
-    estadoCelda: 'Libre'
+    tipo: 'Automovil',
+    estado: 'Libre'
   };
 
   guardarCelda() {
@@ -33,19 +32,7 @@ export class CrearCeldaComponent {
 
 
 
-// guardarCelda() {
-//     if (!this.nuevaCelda.nombre.trim()) return;
 
-//     this.celdaService.crearCelda(this.nuevaCelda).subscribe({
-//       next: (celdaCreada) => {
-//         this.celdas.push(celdaCreada);
-//         this.nuevaCelda = { nombre: '', estado: 'disponible' };
-//         this.mostrarFormulario = false;
-//       },
-//       error: (err) => console.error('Error al crear celda:', err)
-//     });
-
-//   }
 
 
 

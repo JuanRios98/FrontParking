@@ -1,38 +1,11 @@
-<!-- <div *ngIf="mostrarModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-md">
-    <h2 class="text-xl font-bold mb-4">Crear Nueva Celda</h2>
-
-    <label class="block mb-2 text-sm font-medium">Nombre</label>
-    <input
-      [(ngModel)]="nuevaCelda.nombre"
-      type="text"
-      class="w-full border rounded px-3 py-2 mb-4"
-      placeholder="Ej. Celda 01"
-    />
-
-    <label class="block mb-2 text-sm font-medium">Estado</label>
-    <select
-      [(ngModel)]="nuevaCelda.estado"
-      class="w-full border rounded px-3 py-2 mb-4"
-    >
-      <option value="disponible">Disponible</option>
-      <option value="ocupada">Ocupada</option>
-      <option value="reservada">Reservada</option>
-    </select>
-
-    <div class="flex justify-end gap-2">
-      <button (click)="mostrarModal = false" class="px-4 py-2 bg-gray-300 rounded">
-        Cancelar
-      </button>
-      <button (click)="guardarCelda()" class="px-4 py-2 bg-green-600 text-white rounded">
-        Guardar
-      </button>
-    </div>
-  </div>
-</div> -->
-
+<!--fixed inset-0 → ocupa toda la pantalla,bg-black bg-opacity-50 → aplica un fondo oscuro semitransparente, flex items-center justify-center → centra el contenido (el formulario)
+z-50 → lo coloca por encima del resto del contenido-->
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <!-- Contenedor del modal -->
+  <!-- Contenedor del modal
+   bg-white → fondo blanco (contrasta con el overlay oscuro).
+   rounded-xl shadow-lg → bordes redondeados y sombra para efecto flotante.
+   p-6 w-full max-w-md → tamaño razonable para formularios.
+  -->
   <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
     <h2 class="text-xl font-bold mb-4">Crear Celda</h2>
 
@@ -45,7 +18,7 @@
 
       <div>
         <label for="tipoCelda" class="block font-medium">Tipo de Celda:</label>
-        <select id="tipoCelda" [(ngModel)]="nuevaCelda.tipoCelda" name="tipoCelda"
+        <select id="tipoCelda" [(ngModel)]="nuevaCelda.tipo" name="tipoCelda"
           class="w-full border rounded-md px-3 py-2">
           <option value="Automovil">Automóvil</option>
           <option value="Moto">Moto</option>
@@ -54,10 +27,10 @@
 
       <div>
         <label for="estadoCelda" class="block font-medium">Estado:</label>
-        <select id="estadoCelda" [(ngModel)]="nuevaCelda.estadoCelda" name="estadoCelda"
+        <select id="estadoCelda" [(ngModel)]="nuevaCelda.estado" name="estadoCelda"
           class="w-full border rounded-md px-3 py-2">
           <option value="Libre">Libre</option>
-          <option value="Ocupada">Ocupada</option>
+          <option value="Ocupado">Ocupada</option>
           <option value="Reservado">Reservado</option>
         </select>
       </div>
