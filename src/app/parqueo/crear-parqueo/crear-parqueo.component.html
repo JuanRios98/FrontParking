@@ -1,0 +1,45 @@
+<!-- <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Registrar Parqueo</h2>
+
+
+
+        <div>
+            <label for="block font-medium" class="">Tipo Vehiculo</label>
+            <input type="text" class="w-full border rounded-md px-3 py-2">
+
+        </div>
+
+    </div>
+</div> -->
+
+<div class="p-4 bg-white rounded-xl shadow-md w-full max-w-md mx-auto">
+  <h2 class="text-xl font-bold mb-4 text-center">Registrar Parqueo</h2>
+  
+  <!-- <form (ngSubmit)="onSubmit()" [formGroup]="formParqueo"> -->
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Placa</label>
+      <input formControlName="placa" type="text" class="w-full p-2 border rounded" required />
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Tipo de Vehículo</label>
+      <select formControlName="tipoVehiculo" class="w-full p-2 border rounded" required>
+        <option value="">Seleccionar</option>
+        <option value="Carro">Carro</option>
+        <option value="Moto">Moto</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-sm font-medium">Fecha de Entrada</label>
+      <input formControlName="fechaEntrada" type="datetime-local" class="w-full p-2 border rounded" />
+    </div>
+
+    <div class="flex justify-end">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        Parquear
+      </button>
+    </div>
+  <!-- </form> -->
+</div>

@@ -12,6 +12,7 @@ const ROUTES: Routes = [
     children: [
       {path:'celda', loadChildren: () => import('../celda/celda.module').then(m => m.CeldaModule)},
       {path:'cliente', loadChildren: () => import('../cliente/cliente.module').then(m => m.ClienteModule)},
+      {path: 'parqueo', loadChildren: () => import('../parqueo/parqueo.module').then(m => m.ParqueoModule)},
       
 
     ]

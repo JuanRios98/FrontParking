@@ -13,6 +13,9 @@ const ROUTES: Routes = [
   {
     path: 'crear',
     component: CrearCeldaComponent
+  },
+  {
+    
   }
 
 ]
