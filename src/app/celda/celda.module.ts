@@ -4,19 +4,16 @@ import { CeldaComponent } from './celda/celda.component';
 import { Routes, RouterModule } from '@angular/router';
 import { CrearCeldaComponent } from './crear-celda/crear-celda.component';
 import { FormsModule } from '@angular/forms';
+import { CrearParqueoComponent } from '../parqueo/crear-parqueo/crear-parqueo.component';
+import { ParqueoModule } from '../parqueo/parqueo.module';
+
 
 const ROUTES: Routes = [
   {
     path: '',
     component: CeldaComponent
-  },
-  {
-    path: 'crear',
-    component: CrearCeldaComponent
-  },
-  {
-    
   }
+  
 
 ]
 
@@ -24,12 +21,16 @@ const ROUTES: Routes = [
 @NgModule({
   declarations: [
     CeldaComponent,
-    CrearCeldaComponent
+    CrearCeldaComponent,
+    
+
+
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(ROUTES),
-    FormsModule
+    FormsModule,
+    ParqueoModule
   ]
 })
 export class CeldaModule { }

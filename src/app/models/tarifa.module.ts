@@ -3,6 +3,6 @@ export interface Tarifa {
     tipoVehiculo: 'Moto' | 'Automovil';
     tipoTarifa: 'Hora' | 'Mensual';
     monto: number;
-    FechaActualizacion: Date
+    FechaActualizacion?: Date
 
 }

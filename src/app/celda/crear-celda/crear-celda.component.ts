@@ -29,7 +29,7 @@ export class CrearCeldaComponent {
     this.guardar.emit(this.nuevaCelda);
   }
 
-  cerrarModal() {
+  cerrarModalCrearCelda() {
     this.cerrar.emit();
   }
 

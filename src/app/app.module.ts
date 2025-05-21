@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideHttpClient } from '@angular/common/http';
 import { ClienteComponent } from './cliente/cliente.component';
+import { ParqueoModule } from './parqueo/parqueo.module';
+import { CeldaModule } from './celda/celda.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +16,10 @@ import { ClienteComponent } from './cliente/cliente.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ParqueoModule,
+    CeldaModule,
+    LayoutModule
   ],
   providers: [
     provideHttpClient(),

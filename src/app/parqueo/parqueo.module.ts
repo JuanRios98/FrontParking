@@ -14,7 +14,7 @@ const ROUTES: Routes = [
 
 @NgModule({
   declarations: [
-    CrearParqueoComponent
+   CrearParqueoComponent
 
   ],
   imports: [
@@ -22,6 +22,9 @@ const ROUTES: Routes = [
     FormsModule,
     RouterModule.forChild(ROUTES)
 
+  ], exports:
+  [
+    CrearParqueoComponent
   ]
 })
 export class ParqueoModule { }

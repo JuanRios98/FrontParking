@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { VehiculoService } from '../../services/vehiculo.service';
+import { ParqueoService } from '../../services/parqueo.service';
+import { Celda } from '../../models/celda.module';
+import { Parqueo } from '../../models/parqueo.module';
+import { Vehiculo } from '../../models/vehiculo.module';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crear-parqueo',
@@ -8,29 +14,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './crear-parqueo.component.css'
 })
 export class CrearParqueoComponent {
+  
+  constructor(private fb: FormBuilder, private _vehiculoService: VehiculoService, private _parqueoService: ParqueoService) {}
 
-  formParqueo!: FormGroup;
+  @Input() celda?: Celda;
+  @Output() cerrar = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder) {}
-
-  ngOnInit(): void {
-    this.formParqueo = this.fb.group({
-      placa: ['', Validators.required],
-      tipoVehiculo: ['', Validators.required],
-      fechaEntrada: [this.getNowDateTimeLocal(), Validators.required]
-    });
+  cancelar() {
+    this.cerrar.emit();
   }
-
-  getNowDateTimeLocal(): string {
-    const now = new Date();
-    return new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
-  }
-
-  onSubmit(): void {
-    if (this.formParqueo.valid) {
-      const datos = this.formParqueo.value;
-      console.log('Formulario enviado:', datos);
-      // Aquí luego llamaremos al servicio para registrar
-    }}
 
 }
+

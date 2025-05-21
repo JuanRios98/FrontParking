@@ -1,23 +1,39 @@
 import { Component,Output,EventEmitter } from '@angular/core';
 import { CeldaService } from '../../services/celda.service';
 import { Celda } from '../../models/celda.module';
+import { Parqueo } from '../../models/parqueo.module';
 import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-celda',
   standalone: false,
-  templateUrl: './celda.component.html',
+  templateUrl:'./celda.component.html',
   styleUrl: './celda.component.css'
 })
 export class CeldaComponent {
+
+mostrarParqueo: boolean = false;
+celdaseleccionada: Celda | undefined;
+
+
+abrirModalParqueo(celda: Celda) {
+    this.celdaseleccionada = celda;
+    this.mostrarParqueo = true;
+  }
+
+  cerrarModalParqueo() {
+    this.mostrarParqueo = false;
+  }
+
+
+constructor(private _celdaservice: CeldaService){} 
 
   celdas: Celda[] = [
     {id: 1,codigo: 'A01', estado: 'Libre', tipo: 'Automovil'},
     {id: 2,codigo: 'A02', estado: 'Ocupado', tipo: 'Automovil'},
     {id: 3,codigo: 'A03', estado: 'Reservado', tipo: 'Automovil'},
   ]
-
-constructor(private _celdaservice: CeldaService){}  
+mostrarModal: boolean = false;
 
 ngOnInit() {
   this.cargarCeldas();
@@ -39,13 +55,13 @@ cargarCeldas() {
   })
 }
 
-mostrarModal: boolean = false;
+
 
 abrirModalCrearCelda() {
   this.mostrarModal = true;
 }
 
-cerrarModal() {
+cerrarModalCrearCelda() {
   this.mostrarModal = false;
 }
 

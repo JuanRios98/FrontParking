@@ -1,11 +1,7 @@
 <!--fixed inset-0 → ocupa toda la pantalla,bg-black bg-opacity-50 → aplica un fondo oscuro semitransparente, flex items-center justify-center → centra el contenido (el formulario)
 z-50 → lo coloca por encima del resto del contenido-->
 <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <!-- Contenedor del modal
-   bg-white → fondo blanco (contrasta con el overlay oscuro).
-   rounded-xl shadow-lg → bordes redondeados y sombra para efecto flotante.
-   p-6 w-full max-w-md → tamaño razonable para formularios.
-  -->
+
   <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
     <h2 class="text-xl font-bold mb-4">Crear Celda</h2>
 
@@ -37,7 +33,7 @@ z-50 → lo coloca por encima del resto del contenido-->
 
       <div class="flex justify-end gap-4 pt-4">
         <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Guardar</button>
-        <button type="button" (click)="cerrarModal()" class="bg-gray-300 px-4 py-2 rounded-lg">Cancelar</button>
+        <button type="button" (click)="cerrarModalCrearCelda()" class="bg-gray-300 px-4 py-2 rounded-lg">Cancelar</button>
       </div>
     </form>
   </div>
