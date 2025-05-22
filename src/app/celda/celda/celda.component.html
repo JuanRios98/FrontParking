@@ -81,7 +81,8 @@
            'bg-red-100 border-red-300': celda.estado === 'Ocupado',
            'bg-yellow-100 border-yellow-300': celda.estado === 'Reservado'
          }"
-         (click)="celda.estado === 'Libre' && abrirModalParqueo(celda)">
+         (click)="celda.estado === 'Libre' && abrirModalParqueo(celda)"
+         (click)="celda.estado !== 'Libre' && abrirModalDetalleCelda(celda)">
 
       <div class="mb-4">
         <div [ngClass]="{
@@ -124,3 +125,10 @@
   [celda]="celdaseleccionada"
   (cerrar)="cerrarModalParqueo()">
 </app-crear-parqueo>
+
+<!-- Modal para mostrar detalle del parqueo -->
+<app-detalle-celda
+  *ngIf="mostarDetalleCelda"
+  [celda]="celdaseleccionada"
+  (cerrar)="cerrarModalDetalleCelda()"> 
+</app-detalle-celda>

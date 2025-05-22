@@ -17,6 +17,10 @@ export class CeldaService {
     return this._httpCliente.get<Celda[]>(this.urlApi)
   }
 
+  getCeldaById(Id: number): Observable<Celda>{
+    return this._httpCliente.get<Celda>(this.urlApi + '/' + Id)
+  }
+
   postCelda(celda: Celda): Observable<Celda>{
     return this._httpCliente.post<Celda>(this.urlApi, celda)
   }

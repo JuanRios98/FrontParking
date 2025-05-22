@@ -6,6 +6,7 @@ import { CrearCeldaComponent } from './crear-celda/crear-celda.component';
 import { FormsModule } from '@angular/forms';
 import { CrearParqueoComponent } from '../parqueo/crear-parqueo/crear-parqueo.component';
 import { ParqueoModule } from '../parqueo/parqueo.module';
+import { DetalleCeldaComponent } from './detalle-celda/detalle-celda.component';
 
 
 const ROUTES: Routes = [
@@ -22,6 +23,7 @@ const ROUTES: Routes = [
   declarations: [
     CeldaComponent,
     CrearCeldaComponent,
+    DetalleCeldaComponent,
     
 
 

@@ -1,0 +1,41 @@
+<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4" >Detalle Celda</h2>
+
+        <form class="space-y-4">
+            <div>
+                <label class="block font-medium">Código Celda:</label>
+                <input type="text" value="A012" class="w-full border rounded-md px-3 py-2" readonly />
+            </div>
+
+            <div>
+                <label for="codigo" class="block font-medium">Placa:</label>
+                <input type="text"id="codigo" value="ABC123" class="w-full border rounded-md px-3 py-2" readonly />
+            </div>
+
+            <div>
+                <label for="" class="block font-medium">Tipo de Vehiculo:</label>
+                <input type="text" id="" value="Automovil" class="w-full border rounded-md px-3 py-2" readonly />
+            </div>
+
+            <div>
+                <label for="" class="block font-medium">Fecha Entrada:</label>
+                <input type="text" id="" value="2025-05-17 08:00" class="w-full border rounded-md px-3 py-2" readonly />
+            </div>
+
+            <div >
+                <label for="" class="block font-medium">Tipo de Plan:</label>
+                <input type="text" value="Mensual" class="w-full border rounded-md px-3 py-2" readonly />
+            </div>
+
+
+            <div class="flex justify-end gap-4 pt-4">
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-lg">Guardar</button>
+                <button (click)="cancelar()" type="button" class="bg-gray-300 px-4 py-2 rounded-lg">Cancelar</button>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>

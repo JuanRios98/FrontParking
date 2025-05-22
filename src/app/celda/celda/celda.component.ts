@@ -3,6 +3,8 @@ import { CeldaService } from '../../services/celda.service';
 import { Celda } from '../../models/celda.module';
 import { Parqueo } from '../../models/parqueo.module';
 import Swal from 'sweetalert2';
+import { vistaParqueo } from '../../models/vista.models';
+import { ParqueoService } from '../../services/parqueo.service';
 
 @Component({
   selector: 'app-celda',
@@ -12,8 +14,32 @@ import Swal from 'sweetalert2';
 })
 export class CeldaComponent {
 
-mostrarParqueo: boolean = false;
+constructor(private _celdaservice: CeldaService, private _parqueoService: ParqueoService){} 
+
 celdaseleccionada: Celda | undefined;
+mostrarParqueo: boolean = false;
+mostarDetalleCelda: boolean = false;
+vistaParqueoSeleccionado: vistaParqueo | undefined;
+
+
+
+//Metodo para abrir modal de detalle celda
+abrirModalDetalleCelda(celda: Celda) {
+  this.mostarDetalleCelda = true;
+  this.celdaseleccionada = celda;
+}
+
+cerrarModalDetalleCelda(){
+  this.mostarDetalleCelda = false
+}
+
+
+
+
+
+
+
+//Metodo para abrir modal de registrar parqueo
 
 
 abrirModalParqueo(celda: Celda) {
@@ -25,15 +51,14 @@ abrirModalParqueo(celda: Celda) {
     this.mostrarParqueo = false;
   }
 
+// Metodos para mostrar y ocultar el modal de crear celda  
+mostrarModal: boolean = false;
 
-constructor(private _celdaservice: CeldaService){} 
-
-  celdas: Celda[] = [
+celdas: Celda[] = [
     {id: 1,codigo: 'A01', estado: 'Libre', tipo: 'Automovil'},
     {id: 2,codigo: 'A02', estado: 'Ocupado', tipo: 'Automovil'},
     {id: 3,codigo: 'A03', estado: 'Reservado', tipo: 'Automovil'},
   ]
-mostrarModal: boolean = false;
 
 ngOnInit() {
   this.cargarCeldas();
