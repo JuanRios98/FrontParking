@@ -1,22 +1,27 @@
-<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+<!-- <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
 
   <div class="bg-white rounded-xl shadow-lg p-6 w-full max-w-md">
     <h2 class="text-xl font-bold mb-4">Registrar Parqueo</h2>
 
-    <form class="space-y-4">
+    <form class="space-y-4" (ngSubmit)="registrar()">
       <div>
         <label class="block font-medium">Placa:</label>
-        <input type="text" value="ABC123" class="w-full border rounded-md px-3 py-2" readonly />
-      </div>
+        <input type="text" name="placa"  [(ngModel)]="vehiculo.placa" class="w-full border rounded-md px-3 py-2" required>
+      </div> -->
 
-      <div>
+      <!-- <div>
         <label class="block font-medium">Tipo de Vehículo:</label>
-        <input type="text" value="Automovil" class="w-full border rounded-md px-3 py-2" readonly />
-      </div>
+        <input type="text" [(ngModel)]="tipoVehiculo" class="w-full border rounded-md px-3 py-2" required>
+      </div> -->
 
-      <div>
+      <!-- <div>
+        <label class="block font-medium" for="">Tipo Tarifa:</label>
+        <input type="text" class="w-full border rounded-md px-3 py-2" readonly />
+      </div> -->
+
+      <!-- <div>
         <label class="block font-medium">Fecha Entrada:</label>
-        <input type="text" value="2025-05-17 08:00" class="w-full border rounded-md px-3 py-2" readonly />
+        <input type="datetime-local" name="fechaIngreso" [(ngModel)]="parqueo.fechaIngreso" class="w-full border rounded-md px-3 py-2" required>
       </div>
 
       <div class="flex justify-end gap-4 pt-4">
@@ -26,6 +31,18 @@
     </form>
   </div>
 </div>
+  -->
 
+  <!-- <form (ngSubmit)="registrarParqueo()">
+  <label>Placa del Vehículo:</label>
+  <input type="text" [(ngModel)]="vehiculoNuevo.placa" name="placa" required>
 
- 
+  <label>Selecciona una tarifa:</label>
+  <select [(ngModel)]="tarifaSeleccionada" name="tarifaSeleccionada" required>
+    <option *ngFor="let tarifa of tarifasDisponibles" [ngValue]="tarifa">
+      {{ tarifa.tipoTarifa }} - ${{ tarifa.monto }}
+    </option>
+  </select>
+
+  <button type="submit">Registrar Parqueo</button>
+</form> -->

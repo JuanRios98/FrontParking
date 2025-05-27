@@ -5,6 +5,9 @@ import { Parqueo } from '../../models/parqueo.module';
 import Swal from 'sweetalert2';
 import { vistaParqueo } from '../../models/vista.models';
 import { ParqueoService } from '../../services/parqueo.service';
+import { VehiculoService } from '../../services/vehiculo.service';
+import { TarifaService } from '../../services/tarifa.service';
+import { DetalleParqueo } from '../../models/detalleParqueo.module';
 
 @Component({
   selector: 'app-celda',
@@ -14,42 +17,48 @@ import { ParqueoService } from '../../services/parqueo.service';
 })
 export class CeldaComponent {
 
-constructor(private _celdaservice: CeldaService, private _parqueoService: ParqueoService){} 
+constructor(private _celdaservice: CeldaService, private _parqueoService: ParqueoService, private _vehiculoService: VehiculoService, private _tarifaService: TarifaService){} 
 
-celdaseleccionada: Celda | undefined;
-mostrarParqueo: boolean = false;
-mostarDetalleCelda: boolean = false;
-vistaParqueoSeleccionado: vistaParqueo | undefined;
+// mostrarParqueo: boolean = false;
 
+  vistaParqueoDatos: vistaParqueo | null = null;
+  mostrarModalParqueo = false;
 
+  
+  parqueoIdSeleccionaado!: Number;
+  detalleParqueo!: DetalleParqueo;
 
+  mostarDetalleCelda: boolean = false;
+  celdaSeleccionada!: Celda;
+  
 //Metodo para abrir modal de detalle celda
-abrirModalDetalleCelda(celda: Celda) {
-  this.mostarDetalleCelda = true;
-  this.celdaseleccionada = celda;
+abrirModalDetalleCelda(celdaId: number): void {
+  this._parqueoService.getDetalleParqueo(celdaId).subscribe({
+    next: (detalle) => {
+      // Asignamos el detalle recibido a la variable que usará la vista
+      this.detalleParqueo = detalle;
+
+      // Mostramos el modal o componente de detalle
+      this.mostarDetalleCelda = true;
+    },
+    error: (error) => {
+      console.error('Error al cargar el detalle de la celda:', error);
+
+      // Mostramos una alerta con SweetAlert
+      Swal.fire({
+        title: 'Error',
+        text: 'No se pudo cargar el detalle del parqueo.',
+        icon: 'error',
+        timer: 2000,
+        showConfirmButton: false
+      });
+    }
+  });
 }
 
-cerrarModalDetalleCelda(){
+cerrarModalDetalleCelda() {
   this.mostarDetalleCelda = false
 }
-
-
-
-
-
-
-
-//Metodo para abrir modal de registrar parqueo
-
-
-abrirModalParqueo(celda: Celda) {
-    this.celdaseleccionada = celda;
-    this.mostrarParqueo = true;
-  }
-
-  cerrarModalParqueo() {
-    this.mostrarParqueo = false;
-  }
 
 // Metodos para mostrar y ocultar el modal de crear celda  
 mostrarModal: boolean = false;
@@ -79,7 +88,6 @@ cargarCeldas() {
     }
   })
 }
-
 
 
 abrirModalCrearCelda() {

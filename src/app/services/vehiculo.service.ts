@@ -21,8 +21,8 @@ export class VehiculoService {
     return this._httpCliente.get<Vehiculo>(this.ApiUrl + placa)
   }
 
-  postVehiculo(vehiculo: Vehiculo): Observable<Vehiculo>{
-    return this._httpCliente.post<Vehiculo>(this.ApiUrl, vehiculo)
+  postVehiculo(data: any): Observable<Vehiculo>{
+    return this._httpCliente.post<Vehiculo>(this.ApiUrl, data)
   }
 
 }

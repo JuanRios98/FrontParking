@@ -1,5 +1,5 @@
 export interface Celda {
-    id: number;
+    id?: number;
     tipo: 'Moto'|'Automovil';
     estado: 'Ocupado'|'Libre'| 'Reservado';
     codigo: string;

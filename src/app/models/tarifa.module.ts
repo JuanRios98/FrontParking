@@ -1,5 +1,5 @@
 export interface Tarifa {
-    id: number;
+    id?: number;
     tipoVehiculo: 'Moto' | 'Automovil';
     tipoTarifa: 'Hora' | 'Mensual';
     monto: number;

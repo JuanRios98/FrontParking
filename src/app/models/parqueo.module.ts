@@ -1,8 +1,8 @@
 export interface Parqueo {
-    id: number;
-    vehiculoId: number;
+    id?: number;
+    vehiculoId?: number;
     celdaId: number;
-    tarifaId: number;
+    tarifaId?: number;
     fechaEntrada: Date;
     fechaSalida?: Date;
     totalPagado?: number;

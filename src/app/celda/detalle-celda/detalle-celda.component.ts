@@ -1,6 +1,8 @@
 import { Component, EventEmitter, input } from '@angular/core';
 import { Celda } from '../../models/celda.module';
 import { Input,Output } from '@angular/core';
+import { vistaParqueo } from '../../models/vista.models';
+import { DetalleParqueo } from '../../models/detalleParqueo.module';
 
 @Component({
   selector: 'app-detalle-celda',
@@ -10,10 +12,11 @@ import { Input,Output } from '@angular/core';
 })
 export class DetalleCeldaComponent {
 
-  @Input() celda?: Celda;
+  @Input() detalleParqueo!: DetalleParqueo;
   @Output() cerrar = new EventEmitter<void>();
 
-
+  vistaParqueo: vistaParqueo = {}; 
+  
   cancelar(){
     this.cerrar.emit();
   }

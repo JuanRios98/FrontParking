@@ -1,8 +1,8 @@
 export interface Cliente {
-    id: number;
+    id?: number;
     tipoPlan: 'Mensual' | 'Ocasional';
-    fechaInicio: Date;
-    fechaFin: Date | null;
+    fechaInicio?: Date;
+    fechaFin?: Date | null;
     nombre: string;
     apellido: string;
 }

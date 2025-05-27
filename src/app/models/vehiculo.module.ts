@@ -1,5 +1,5 @@
 export interface Vehiculo {
-    id: number;
+    id?: number;
     placa: string;
     idCliente?: number ;
 
